@@ -14,10 +14,23 @@ $(function($) {
         next = self.find(".nextButton");
 
 
+    //update the position and display of the buttons based on image size and position within the slide show
+
     function slidePosition() {
+
+      // grab the height of the current image
+      var imageHeight = self.find(".current img").height();
+
+      // divide that by 2 to set the "top" attribute of the slide buttons
+      var buttonPosition = imageHeight / 2;
+
+      // udpate those buttons' css
+      self.find(".slideButton").css("top", buttonPosition + "px");
+
+      // check where we are in the slide show and display or hide the appropriate controls
       if (slideCounter === 0 ) {
         previous.hide();
-      } else if (slidecounter === (totalSlides - 1) ) {
+      } else if (slideCounter === (totalSlides - 1) ) {
         next.hide();
       } else {
         previous.show();
@@ -72,7 +85,7 @@ $(function($) {
     $.each(self.find($(".cutline")), function(k,v) {
       var cutlinePrefix = "<strong> Slideshow - " + (k + 1) + " of " + totalSlides + ":</strong> ";
       $(this).prepend(cutlinePrefix);
-    })
+    });
 
     //running the slidePosition initially to hide previous button
     slidePosition();
@@ -85,17 +98,17 @@ $(function($) {
     // if you want to be able to swipe the slideshow on touch devices, un-note the following two lines
     // and make sure you call jquery.swipe.min.js in the index file
 
-    self.on("swipeleft", swipeAdvance);
-    self.on("swiperight", swipeRewind);
+    self.on("swipeleft", advanceSlide);
+    self.on("swiperight", rewindSlide);
 
 
+    // update the position of the slide buttons if the window resizes
     $(window).resize(function() {
         setTimeout(function() {
-            slidePosition()
-        }, 250)
+            slidePosition();
+        }, 150);
     });
 
   };
-
 
 }(jQuery));
