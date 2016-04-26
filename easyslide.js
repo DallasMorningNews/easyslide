@@ -8,10 +8,10 @@ $(function($) {
     var self = this;
 
     // determine total slides
-    totalSlides = self.children(".slide").length;
+    totalSlides = self.find(".slide").length;
 
-    var previous = self.children(".previousButton"),
-        next = self.children(".nextButton");
+    var previous = self.find(".previousButton"),
+        next = self.find(".nextButton");
 
 
     function slidePosition() {
@@ -32,52 +32,26 @@ $(function($) {
     // then check where we are in the slideshow
 
     function advanceSlide() {
-      slideCounter ++; // advancing the counter
 
-      //updating the current slide to become the postslide
-      $(this).siblings('.current').addClass('postSlide').removeClass('current');
+      if (slideCounter < totalSlides - 1) {
+        slideCounter ++; // advancing the counter
 
-      //updating the next slide to become the current slide
-      $(this).siblings('.slide').eq(slideCounter).addClass('current').removeClass('preSlide');
+        //updating the current slide to become the postslide
+        self.find('.current').addClass('postSlide').removeClass('current');
 
-      // grab image paths for the fallback src attribute and the srcset attribute
-      var defaultImage = $(this).siblings('.slide').eq(slideCounter + 1).data('default');
-      var srcset = $(this).siblings('.slide').eq(slideCounter + 1).data('srcset');
+        //updating the next slide to become the current slide
+        self.find('.slide').eq(slideCounter).addClass('current').removeClass('preSlide');
 
-      // setup the next slide in the slideshow with the proper srcset and src attributes
-      $(this).siblings('.slide').eq(slideCounter + 1).children('img').attr('src', defaultImage).attr('srcset', srcset);
+        // grab image paths for the fallback src attribute and the srcset attribute
+        var defaultImage = self.find('.slide').eq(slideCounter + 1).data('default');
+        var srcset = self.find('.slide').eq(slideCounter + 1).data('srcset');
 
-      //check the slide position
-      slidePosition();
-    }
+        // setup the next slide in the slideshow with the proper srcset and src attributes
+        self.find('.slide').eq(slideCounter + 1).children('img').attr('src', defaultImage).attr('srcset', srcset);
 
-
-
-
-  };
-
-
-
-
-
-}(jQuery));
-
-
-
-
-
-    function swipeAdvance() {
-
-        if (slideCounter < totalSlides -1 ) {
-            slideCounter ++;
-            $(this).children('.current').addClass('postSlide').removeClass('current');
-            $(this).children('.slide').eq(slideCounter).addClass('current').removeClass('preSlide');
-            var defaultImage = $(this).children('.slide').eq(slideCounter + 1).data('default');
-            var srcset = $(this).children('.slide').eq(slideCounter + 1).data('srcset');
-            $(this).children('.slide').eq(slideCounter + 1).children('img').attr('src', defaultImage).attr('srcset', srcset);;
-            slidePosition();
-        }
-
+        //check the slide position
+        slidePosition();
+      }
     }
 
     // rewind the slideshow by moving the current slide to the left
@@ -85,44 +59,34 @@ $(function($) {
     // then check where we are in the slideshow
 
     function rewindSlide() {
+      if (slideCounter > 0) {
         slideCounter --;
-        $(this).siblings('.current').addClass('preSlide').removeClass('current');
-        $(this).siblings('.slide').eq(slideCounter).addClass('current').removeClass('postSlide');
+        self.find('.current').addClass('preSlide').removeClass('current');
+        self.find('.slide').eq(slideCounter).addClass('current').removeClass('postSlide');
         slidePosition();
-    }
-
-    function swipeRewind() {
-        if (slideCounter > 0 ) {
-            slideCounter --;
-            $(this).children('.current').addClass('preSlide').removeClass('current');
-            $(this).children('.slide').eq(slideCounter).addClass('current').removeClass('postSlide');
-            slidePosition();
-        }
+      }
     }
 
     // append a number and total length of slideshow to each cutline
 
-    $slideCutline.each(function(k,v) {
-        var cutlinePrefix = "<strong> Slideshow — " + (k + 1) + " of " + totalSlides + ":</strong> ";
-        $(this).prepend(cutlinePrefix);
+    $.each(self.find($(".cutline")), function(k,v) {
+      var cutlinePrefix = "<strong> Slideshow - " + (k + 1) + " of " + totalSlides + ":</strong> ";
+      $(this).prepend(cutlinePrefix);
     })
 
     //running the slidePosition initially to hide previous button
     slidePosition();
 
-    //setting the slideshow button position to be halfway down the slideshow
-    // $slideButton.css('top', ( (slideHeight / 2) - ($slideButton.height() / 2) ) )
-
     //binding click and swipe events to the next and previous button
 
-    $nextButton.on('click', advanceSlide);
-    $previousButton.on('click', rewindSlide);
+    next.on('click', advanceSlide);
+    previous.on('click', rewindSlide);
 
     // if you want to be able to swipe the slideshow on touch devices, un-note the following two lines
     // and make sure you call jquery.swipe.min.js in the index file
 
-    $slideshow.on("swipeleft", swipeAdvance);
-    $slideshow.on("swiperight", swipeRewind);
+    self.on("swipeleft", swipeAdvance);
+    self.on("swiperight", swipeRewind);
 
 
     $(window).resize(function() {
@@ -130,3 +94,8 @@ $(function($) {
             slidePosition()
         }, 250)
     });
+
+  };
+
+
+}(jQuery));
