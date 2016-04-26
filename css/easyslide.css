@@ -1,0 +1,76 @@
+.slideshow {
+  margin: 48px auto;
+  max-width: 1000px;
+}
+.slideshow h5 {
+  font-family: 'Open Sans', Arial, sans-serif;
+  color: #797470;
+}
+.slideContainer {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.slide {
+  float: left;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+  width: 100%;
+}
+.slideButton {
+  background-color: white;
+  cursor: pointer;
+  display: block;
+  height: 50px;
+  opacity: .8;
+  position: absolute;
+  top: 50%;
+  margin-top: -25px;
+  -webkit-transition: opacity .3s ease-out;
+  -moz-transition: opacity .3s ease-out;
+  -o-transition: opacity .3s ease-out;
+  transition: opacity .3s ease-out;
+  width: 50px;
+}
+.slideButton:hover {
+  opacity: 1;
+}
+.nextButton {
+  right: 0;
+}
+.slide img {
+  width: 100%;
+}
+.current {
+  margin-left: 0;
+  opacity: 1;
+  position: relative;
+}
+.preSlide {
+  margin-left: 100%;
+  opacity: 1;
+}
+.postSlide {
+  margin-left: -100%;
+  opacity: 0;
+}
+.cutline {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  color: #797470;
+  font-weight: normal;
+}
+
+@media (max-width: 600px) {
+  .slideButton {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+  }
+}
