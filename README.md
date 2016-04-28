@@ -31,5 +31,5 @@ If you have multiple slideshows, give each `slideshow` div an id, and repeat:
 
 ```javascript
 $("#myFirstSlideshow").easyslide();
-$("#mySecondSlideshow")>easyslide();
+$("#mySecondSlideshow").easyslide();
 ```
