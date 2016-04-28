@@ -7,7 +7,7 @@
     var self = this;
 
     // determine total slides
-    totalSlides = self.find(".slide").length;
+    var totalSlides = self.find(".slide").length;
 
     var previous = self.find(".previousButton"),
         next = self.find(".nextButton");
