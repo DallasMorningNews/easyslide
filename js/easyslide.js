@@ -61,8 +61,14 @@
         // setup the next slide in the slideshow with the proper srcset and src attributes
         self.find('.slide').eq(slideCounter + 1).children('img').attr('src', defaultImage).attr('srcset', srcset);
 
-        //check the slide position
-        slidePosition();
+        //running an interval on the slidePosition initially to hide previous button
+        //interval is set to run to make sure the image has loaded, then cleared
+        var positionInterval = setInterval(function() {
+            if (self.find(".current img").height() > 50) {
+                slidePosition();
+                clearInterval(positionInterval);
+            }
+        }, 3000);
       }
     }
 
