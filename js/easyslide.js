@@ -63,12 +63,9 @@
 
         //running an interval on the slidePosition initially to hide previous button
         //interval is set to run to make sure the image has loaded, then cleared
-        var positionInterval = setInterval(function() {
-            if (self.find(".current img").height() > 50) {
-                slidePosition();
-                clearInterval(positionInterval);
-            }
-        }, 3000);
+
+        slidePosition();
+
       }
     }
 
@@ -92,8 +89,12 @@
       $(this).prepend(cutlinePrefix);
     });
 
-    //running the slidePosition initially to hide previous button
-    slidePosition();
+    var positionInterval = setInterval(function() {
+        if (self.find(".current img").height() > 50) {
+            slidePosition();
+            clearInterval(positionInterval);
+        }
+    }, 3000);
 
     //binding click and swipe events to the next and previous button
 
