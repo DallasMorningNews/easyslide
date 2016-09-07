@@ -3,7 +3,7 @@
   max-width: 1000px;
 }
 .slideshow h5 {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: 'Gotham A', 'Gotham B', Arial, sans-serif;
   color: #797470;
 }
 .slide-container {
@@ -60,7 +60,7 @@
   opacity: 0;
 }
 .cutline {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: 'Gotham A', 'Gotham B', Arial, sans-serif;
   font-size: 13px;
   line-height: 18px;
   color: #797470;
