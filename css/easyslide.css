@@ -6,7 +6,7 @@
   font-family: 'Open Sans', Arial, sans-serif;
   color: #797470;
 }
-.slideContainer {
+.slide-container {
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -22,7 +22,7 @@
   transition: all .3s ease-out;
   width: 100%;
 }
-.slideButton {
+.slide-button {
   background-color: white;
   cursor: pointer;
   display: block;
@@ -37,10 +37,10 @@
   transition: opacity .3s ease-out;
   width: 50px;
 }
-.slideButton:hover {
+.slide-button:hover {
   opacity: 1;
 }
-.nextButton {
+.next-button {
   right: 0;
 }
 .slide img {
@@ -51,11 +51,11 @@
   opacity: 1;
   position: relative;
 }
-.preSlide {
+.pre-slide {
   margin-left: 100%;
   opacity: 1;
 }
-.postSlide {
+.post-slide {
   margin-left: -100%;
   opacity: 0;
 }
@@ -68,7 +68,7 @@
 }
 
 @media (max-width: 600px) {
-  .slideButton {
+  .slide-button {
     width: 30px;
     height: 30px;
     margin-top: -15px;

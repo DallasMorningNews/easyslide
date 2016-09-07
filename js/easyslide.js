@@ -9,8 +9,8 @@
     // determine total slides
     var totalSlides = self.find(".slide").length;
 
-    var previous = self.find(".previousButton"),
-        next = self.find(".nextButton");
+    var previous = self.find(".previous-button"),
+        next = self.find(".next-button");
 
 
     //update the position and display of the buttons based on image size and position within the slide show
@@ -24,7 +24,7 @@
       var buttonPosition = imageHeight / 2;
 
       // udpate those buttons' css
-      self.find(".slideButton").css("top", buttonPosition + "px");
+      self.find(".slide-button").css("top", buttonPosition + "px");
 
       // check where we are in the slide show and display or hide the appropriate controls
       if (slideCounter === 0 ) {
@@ -49,10 +49,10 @@
         slideCounter ++; // advancing the counter
 
         //updating the current slide to become the postslide
-        self.find('.current').addClass('postSlide').removeClass('current');
+        self.find('.current').addClass('post-slide').removeClass('current');
 
         //updating the next slide to become the current slide
-        self.find('.slide').eq(slideCounter).addClass('current').removeClass('preSlide');
+        self.find('.slide').eq(slideCounter).addClass('current').removeClass('pre-slide');
 
         // grab image paths for the fallback src attribute and the srcset attribute
         var defaultImage = self.find('.slide').eq(slideCounter + 1).data('default');
@@ -76,8 +76,8 @@
     function rewindSlide() {
       if (slideCounter > 0) {
         slideCounter --;
-        self.find('.current').addClass('preSlide').removeClass('current');
-        self.find('.slide').eq(slideCounter).addClass('current').removeClass('postSlide');
+        self.find('.current').addClass('pre-slide').removeClass('current');
+        self.find('.slide').eq(slideCounter).addClass('current').removeClass('post-slide');
         slidePosition();
       }
     }
