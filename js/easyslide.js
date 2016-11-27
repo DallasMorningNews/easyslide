@@ -20,8 +20,10 @@
       // grab the height of the current image
       var imageHeight = self.find(".current img").height();
 
+      var buttonHeight = self.find(".slide-button").height();
+
       // divide that by 2 to set the "top" attribute of the slide buttons
-      var buttonPosition = imageHeight / 2;
+      var buttonPosition = (imageHeight / 2) - (buttonHeight / 2);
 
       // udpate those buttons' css
       self.find(".slide-button").css("top", buttonPosition + "px");
@@ -94,7 +96,7 @@
             slidePosition();
             clearInterval(positionInterval);
         }
-    }, 3000);
+    }, 1000);
 
     //binding click and swipe events to the next and previous button
 
