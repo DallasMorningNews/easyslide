@@ -10,7 +10,7 @@ Easyslide is a jQuery plugin for use within the DMN interactives template. It wa
 
 #### Setup
 
-To use the Easyslide plugin, include the `easyslide.js` in your js file within your project. For example, in your scripts.js file import easyslide with `import './easyslide';`.
+To use the Easyslide plugin, include the `easyslide.js` in your js file within your project. Then, in your scripts.js file import easyslide with `import './easyslide';`.
 
 In addition, create your custom slideshow html by using the form linked above, and place that code wherever you'd like within your html document. If you're using the interactives template, the css and slide buttons for the slideshow are included within the template files. Include the css in your styles.scss via `@import 'components/_slideshows';` For those not using the template, the css and button images are included within this repo.
 
