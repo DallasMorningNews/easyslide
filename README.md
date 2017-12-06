@@ -6,7 +6,8 @@ Easyslide is a jQuery plugin for use within the DMN interactives template. It wa
 
 - Easyslide requires jQuery to work. It was built using the jQuery 2.2.3 library, but should work fine with the last stable 1. version.
 - You'll also need the custom slideshow html template. You can get the html you need generated for you by filling out the form [on this page](http://interactives.dallasnews.com/tools/easyslide/). There's also a sample block of code included in the index.html file. But really, use the form. It's easier.
-- Also be sure to include swipe support. Do this however you want, but the plugin uses [Hammer.js](http://hammerjs.github.io/). To use within the current interactive build system, npm install Hammer.js in your project by typing `npm install hammerjs --save` in your terminal.
+- Install the imagesloaded plugin via `npm install imagesloaded --save`.
+- Be sure to include swipe support. Do this however you want, but the plugin uses [Hammer.js](http://hammerjs.github.io/). To use within the current interactive build system, npm install Hammer.js in your project by typing `npm install hammerjs --save` in your terminal.
 
 #### Setup
 

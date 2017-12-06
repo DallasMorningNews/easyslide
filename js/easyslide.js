@@ -1,12 +1,16 @@
+/* global Hammer: true, window: true */
+
 import $ from 'jquery';
 import 'hammerjs';
-/* global Hammer: true, window: true */
+import imagesloaded from 'imagesloaded';
+
+// turns imagesloaded into a plugin and attaches to our jquery
+imagesloaded.makeJQueryPlugin($);
 
 $.fn.easyslide = function () {
   let slideCounter = 0;
 
   const self = this;
-  console.log(self);
   // determine total slides
   const totalSlides = self.find('.slide').length;
 
@@ -45,7 +49,6 @@ $.fn.easyslide = function () {
   // then check where we are in the slideshow
 
   function advanceSlide() {
-    console.log('test');
     if (slideCounter < totalSlides - 1) {
       slideCounter += 1; // advancing the counter
 
@@ -66,8 +69,9 @@ $.fn.easyslide = function () {
 
       // running an interval on the slidePosition initially to hide previous button
       // interval is set to run to make sure the image has loaded, then cleared
-
-      slidePosition();
+      $('.current').imagesLoaded(() => {
+        slidePosition();
+      });
     }
   }
 
